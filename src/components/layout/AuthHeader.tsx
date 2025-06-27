@@ -10,10 +10,10 @@ const AuthHeader: React.FC = () => {
       <div className="container mx-auto">
         <Link 
           to="/" 
-          className="inline-flex items-center gap-2 text-xl font-bold text-gray-800 hover:text-gray-900 transition-colors"
+          className="inline-flex items-center gap-2 text-xl font-bold text-foreground transition-colors"
           aria-label="Go to homepage"
         >
-          <Zap className="h-6 w-6 text-indigo-600" />
+          <Zap className="h-6 w-6 text-primary" />
           <span>SwiftSign-In</span>
         </Link>
       </div>
