@@ -50,14 +50,14 @@ const ResetPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-background">
       <AuthHeader />
       <main className="flex-grow flex items-center justify-center container mx-auto px-4 sm:px-6 lg:px-8">
         <Card className="w-full max-w-md shadow-lg">
           <form onSubmit={handleSubmit}>
             <CardHeader>
               <CardTitle className="text-2xl font-bold flex items-center gap-2">
-                <KeyRound className="h-6 w-6 text-indigo-600" />
+                <KeyRound className="h-6 w-6 text-primary" />
                 Set a New Password
               </CardTitle>
               <CardDescription>
