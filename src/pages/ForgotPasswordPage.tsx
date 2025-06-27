@@ -31,7 +31,7 @@ const ForgotPasswordPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-background">
       <AuthHeader />
       <main className="flex-grow flex items-center justify-center p-4">
         <Card className="w-full max-w-md shadow-lg">
@@ -60,9 +60,9 @@ const ForgotPasswordPage: React.FC = () => {
               <Button type="submit" className="w-full">
                 Send Reset Link
               </Button>
-              <div className="text-center text-sm text-gray-600">
+              <div className="text-center text-sm text-muted-foreground">
                 Remember your password?{' '}
-                <Link to="/" className="font-medium text-indigo-600 hover:text-indigo-500">
+                <Link to="/" className="font-medium text-primary hover:text-primary/90">
                   Back to Login
                 </Link>
               </div>
