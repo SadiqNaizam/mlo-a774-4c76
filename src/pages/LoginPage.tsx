@@ -31,7 +31,7 @@ const LoginPage: React.FC = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-background">
       <AuthHeader />
       <main className="flex-grow flex items-center justify-center p-4">
         <Card className="w-full max-w-sm mx-auto">
@@ -57,7 +57,7 @@ const LoginPage: React.FC = () => {
                   <Label htmlFor="password">Password</Label>
                   <Link
                     to="/forgot-password"
-                    className="text-sm font-medium text-indigo-600 hover:underline"
+                    className="text-sm font-medium text-primary hover:underline"
                   >
                     Forgot password?
                   </Link>
@@ -86,7 +86,7 @@ const LoginPage: React.FC = () => {
               Don't have an account?{' '}
               <Link
                 to="/sign-up"
-                className="font-medium text-indigo-600 hover:underline"
+                className="font-medium text-primary hover:underline"
               >
                 Sign Up
               </Link>
