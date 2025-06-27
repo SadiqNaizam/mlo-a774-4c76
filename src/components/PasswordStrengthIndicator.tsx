@@ -93,6 +93,36 @@ const CustomProgress = React.forwardRef<
 
 const PasswordStrengthIndicatorFinal: React.FC<PasswordStrengthIndicatorProps> = ({ password = '' }) => {
   console.log('PasswordStrengthIndicator loaded');
+  
+  const getStrength = (pass: string): StrengthLevel => {
+    let score = 0;
+    if (!pass) {
+      return { label: '', value: 0, color: '' };
+    }
+
+    // Award points for different criteria
+    if (pass.length > 0) score++; // Min score for any input
+    if (pass.length >= 8) score++; // Good length
+    if (/[A-Z]/.test(pass) && /[a-z]/.test(pass)) score++; // Mix of cases
+    if (/\d/.test(pass)) score++; // Contains numbers
+    if (/[^A-Za-z0-9]/.test(pass)) score++; // Contains special characters
+
+    switch (score) {
+      case 1:
+        return { label: 'Very Weak', value: 20, color: 'bg-red-500' };
+      case 2:
+        return { label: 'Weak', value: 40, color: 'bg-orange-500' };
+      case 3:
+        return { label: 'Medium', value: 60, color: 'bg-yellow-500' };
+      case 4:
+        return { label: 'Strong', value: 80, color: 'bg-blue-500' };
+      case 5:
+        return { label: 'Very Strong', value: 100, color: 'bg-green-500' };
+      default:
+        return { label: '', value: 0, color: '' };
+    }
+  };
+
 
   const strength = useMemo(() => getStrength(password), [password]);
 
@@ -101,14 +131,6 @@ const PasswordStrengthIndicatorFinal: React.FC<PasswordStrengthIndicatorProps> =
 
   return (
     <div className="w-full space-y-2 transition-all duration-300">
-      <Progress 
-        value={strength.value} 
-        className="h-2 bg-gray-200 dark:bg-gray-700"
-        // This special syntax targets the direct child div (the indicator) and applies the background color.
-        // It's a powerful Tailwind feature for styling un-exposed children elements.
-        // NOTE: This approach is not directly supported by React props. A different strategy is needed.
-        // A simple way is to wrap it and pass the class. Let's assume a wrapper or we just conditionally render.
-      />
       {/* 
         The Progress component from shadcn is a styled wrapper around Radix UI Progress.
         It doesn't have a prop to style the inner `Indicator` element.
@@ -116,7 +138,7 @@ const PasswordStrengthIndicatorFinal: React.FC<PasswordStrengthIndicatorProps> =
         For this generator, let's use a simpler, albeit more verbose, method: conditional rendering of styled bars.
         This ensures it works without modifying the base component.
       */}
-      <div className="relative h-2 w-full rounded-full bg-gray-200 dark:bg-gray-700 overflow-hidden">
+      <div className="relative h-2 w-full rounded-full bg-muted overflow-hidden">
         <div 
           className={`h-full rounded-full transition-all duration-300 ${strength.color}`} 
           style={{ width: `${strength.value}%` }}
