@@ -41,7 +41,7 @@ const AccountDashboard = () => {
   };
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50">
+    <div className="flex flex-col min-h-screen bg-background">
       <AuthHeader />
       
       <main className="flex-1 flex items-center justify-center p-4">
